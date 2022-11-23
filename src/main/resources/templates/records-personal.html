@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>Персональные записи</title>
+</head>
+<body>
+<div th:switch="${records}">
+  <h2 th:case="null">Нет записей</h2>
+  <div th:case="*">
+    <h2>Записи</h2>
+    <p><a href="/records">Назад ко всем записям</a></p>
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Имя задачи</th>
+        <th>Пользователь</th>
+        <th>Статус задачи</th>
+        <th>Дата</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="record : ${records}">
+        <td th:text="${record.id}"></td>
+        <td th:text="${record.name}"></td>
+        <td th:text="${record.user}"></td>
+        <td th:text="${record.status}"></td>
+        <td th:text="${record.time}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

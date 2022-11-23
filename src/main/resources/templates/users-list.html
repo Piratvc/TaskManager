@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+
+
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null">не найдено</h2>
+    <div th:case="*">
+        <h2>Пользователи</h2>
+        <p><a href="/records">Назад ко всем записям</a></p>
+        <br>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя</th>
+                <th>Логин</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.username}"></td>
+                <!--                <td><a th:href="@{records/student-{id}/(id=${student.id})}">Расписание</a></td>-->
+                <!--                                    <td><a th:href="@{user-update/{id}(id=${user.id})}">Редактировать</a></td>-->
+                <!--                    <td><a th:href="@{user-delete/{id}(id=${user.id})}">Удалить</a></td>-->
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+            <p><a href="/user-create">Добавить пользователя</a></p>
+</div>
+</body>
+</html>

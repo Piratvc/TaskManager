@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Изменение записи</title>
+</head>
+<body>
+<form action="#" th:action="@{/record-update}" th:object="${taskRecord}" method="post">
+  <label for="id">ID</label>
+  <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+  <br/>
+  <label for="name">Название задачи</label>
+  <input type="text" th:field="*{name}" id="name">
+  <br/>
+  <label for="user">id пользователя</label>
+  <input type="text" th:field="*{user}" id="user">
+  <a th:href="@{users}">Посмотреть id пользователей</a>
+  <br/>
+  <label for="status">id статуса</label>
+  <input type="text" th:field="*{status}" id="status">
+  <br/>
+  <label for="time">Дата</label>
+  <input type="date" th:field="*{time}" id="time">
+  </br>
+  <input type="submit" value="Изменить запись">
+</form>
+</body>
+</html>

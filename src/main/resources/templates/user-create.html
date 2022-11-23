@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Создать студента</title>
+</head>
+<body>
+<form action="#" th:action="@{/user-create}" th:object="${user}" method="post">
+
+  <label for="name">Имя</label>
+  <input type="text" th:field="*{name}" id="name" >
+  <br/>
+  <label for="username">Логин для входа</label>
+  <input type="text" th:field="*{username}" id="username" >
+  <br/>
+  <label for="password">Пароль для входа</label>
+  <input type="password" th:field="*{password}" id="password" >
+  <br/>
+  <input type="submit" value="Добавить пользователя">
+  <br/>
+</form>
+</body>
+</html>

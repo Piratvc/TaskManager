@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Записи о всех задачах</title>
+</head>
+<body>
+<div th:switch="${records}">
+    <h2 th:case="null">Нет записей</h2>
+    <div th:case="*">
+        <h2>Записи</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя задачи</th>
+                <th>Пользователь</th>
+                <th>Статус задачи</th>
+                <th>Дата</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="record : ${records}">
+                <td th:text="${record.id}"></td>
+                <td th:text="${record.name}"></td>
+                <td th:text="${record.user}"></td>
+                <td th:text="${record.status}"></td>
+                <td th:text="${record.time}"></td>
+                <td><a th:href="@{records/user-{id}/(id=${record.user.id})}">Задачи этого человека</a></td>
+                <td><a th:href="@{records/status-{id}/(id=${record.status.id})}">Задачи c этим статусом</a></td>
+                <td><a th:href="@{records/{name}(name=${record.name})}">История статусов по задаче</a></td>
+                <td><a th:href="@{record-delete/{id}(id=${record.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/record-create">Добавить запись</a></p>
+</div>
+</body>
+</html>

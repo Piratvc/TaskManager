@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Создание записи об уроке</title>
+</head>
+<body>
+<form action="#" th:action="@{/record-create}" th:object="${taskRecord}" method="post">
+  <label for="name">Название задачи</label>
+  <input type="text" th:field="*{name}" id="name">
+  <br/>
+  <label for="user">id пользователя</label>
+  <input type="text" th:field="*{user}" id="user">
+  <a th:href="@{users}">Посмотреть id пользователей</a>
+  <br/>
+  <input type="submit" value="Добавить запись">
+</form>
+</body>
+</html>

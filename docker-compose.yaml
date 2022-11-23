@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_DB=TaskDatabase
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+
+
+  app:
+    build: ./
+    image: java-docker
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/TaskDatabase
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+
+
+

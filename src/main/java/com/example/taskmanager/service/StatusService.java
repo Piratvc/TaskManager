@@ -1,12 +1,9 @@
 package com.example.taskmanager.service;
 
 import com.example.taskmanager.model.Status;
-import com.example.taskmanager.model.User;
 import com.example.taskmanager.repository.StatusRepository;
-import com.example.taskmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

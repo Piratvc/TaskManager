@@ -42,7 +42,9 @@ public class TaskRecordController {
         record.setStatus(status);
         record.setTime(new Date(Calendar.getInstance().getTimeInMillis()));
         taskRecordService.saveRecord(record);
-        //спустя время статус заявки обновляется
+        //здесь для реализации обновления статуса задачи открываю парралельный поток,
+        // в котором отсчитываю рандомно чуть больше 30 секунд
+        // и создаю новую запись что задача завершена
         Thread myThread = new Thread(new Runnable() {
             @SneakyThrows
             @Override
@@ -80,14 +82,6 @@ public class TaskRecordController {
         taskRecordService.saveRecord(record);
         return "redirect:/records";
     }
-
-//    @GetMapping("/records/user-{id}/{date}")
-//    public String findTaskRecordsByUserIdAndDate(@PathVariable("id") Long id, @PathVariable("date") String stringTime, Model model) throws ParseException {
-//        Date time = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(stringTime);
-//        List<TaskRecord> records = taskRecordService.getTaskRecordsByUserIdAndDate(id, time);
-//        model.addAttribute("records", records);
-//        return "records-personal-date";
-//    }
 
     @GetMapping("/records/user-{id}/")
     public String findTaskRecordsByUserId(@PathVariable("id") Long id, Model model) {

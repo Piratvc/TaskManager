@@ -10,5 +10,4 @@ public interface TaskRecordRepository extends JpaRepository<TaskRecord, Long> {
     List<TaskRecord> findByUserId(Long id);
     List<TaskRecord> findByStatusId(Long id);
     List<TaskRecord> findByName(String name);
-//    List<TaskRecord> findByTimeAndUserId(Date time, Long id);
 }

@@ -36,7 +36,6 @@ public class AuthenticationRestController {
 
     @PostMapping("/login")
     public String login(
-//            @RequestBody
             AuthenticationRequestDto requestDto,
             HttpServletResponse response) {
         try {

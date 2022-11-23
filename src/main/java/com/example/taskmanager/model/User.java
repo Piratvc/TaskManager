@@ -2,7 +2,6 @@ package com.example.taskmanager.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
-
 import java.util.List;
 import java.util.Objects;
 

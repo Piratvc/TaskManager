@@ -3,9 +3,6 @@ package com.example.taskmanager.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
-
-
-//import java.sql.Date;
 import java.util.Date;
 import java.util.Objects;
 

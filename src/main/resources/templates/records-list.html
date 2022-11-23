@@ -48,7 +48,7 @@ tr:nth-child(even) {
                 <td th:text="${record.status}"></td>
                 <td th:text="${record.time}"></td>
                 <td><a th:href="@{records/user-{id}/(id=${record.user.id})}">Задачи этого человека</a></td>
-                <td><a th:href="@{records/status-{id}/(id=${record.status.id})}">Задачи c этим статусом</a></td>
+                <td><a th:href="@{records/status-{id}/(id=${record.status.id})}">Все с этим статусом</a></td>
                 <td><a th:href="@{records/{name}(name=${record.name})}">История статусов по задаче</a></td>
                 <td><a th:href="@{record-delete/{id}(id=${record.id})}">Удалить</a></td>
             </tr>

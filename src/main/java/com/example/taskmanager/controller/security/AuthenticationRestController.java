@@ -8,6 +8,7 @@ import com.example.taskmanager.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 public class AuthenticationRestController {
+
+    @Value("${cookie.maxage}")
+    private int cookieMaxage;
 
     private final AuthenticationManager authenticationManager;
 
@@ -51,7 +55,7 @@ public class AuthenticationRestController {
 
             Cookie bearerCookie = new Cookie("Bearer", token);
             bearerCookie.setHttpOnly(Boolean.TRUE);
-            bearerCookie.setMaxAge(300);
+            bearerCookie.setMaxAge(cookieMaxage);
             response.addCookie(bearerCookie);
             System.out.println("отправляем токен " + token);
             if (token != null) {
